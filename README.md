@@ -18,7 +18,6 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 
 ## // Features
 
-*   **Swiss Style Design System**: A rigorous, high-contrast UI based on International Typographic Style principles.
 *   **Gemini AI Integration**: Automated discovery of causal drivers and strategic interventions using Google's Gemini 2.5 Flash model.
 *   **AHP Computation Engine**: Client-side calculation of Eigenvectors, Consistency Ratios (CR), and geometric mean aggregation.
 *   **Interactive Visualization**: Force-directed logic graphs using D3.js and priority matrices using Recharts.
