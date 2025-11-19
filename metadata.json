@@ -1,0 +1,5 @@
+{
+  "name": "GovernanceOS: OCI-AHP Engine",
+  "description": "A structured decision-making tool implementing the Outcome-Cause-Intervention methodology with AHP prioritization.",
+  "requestFramePermissions": []
+}
