@@ -4,8 +4,6 @@
 
 GovernanceOS is a React-based decision intelligence tool designed for public administrations and mission-driven teams. It synthesizes the **Outcome–Cause–Intervention (OCI)** causal structure with the **Analytic Hierarchy Process (AHP)** to prioritize interventions based on mathematical utility rather than intuition alone.
 
-![Swiss Style UI](https://via.placeholder.com/800x400?text=GovernanceOS+UI+Preview)
-
 ## // Methodology
 
 The system imposes a strict three-tier ontology to ensure traceability:
@@ -20,7 +18,7 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 
 ## // Features
 
-*   **Swiss Style Design System**: A rigorous, high-contrast UI based on International Typographic Style principles.
+*   **International Design System**: A high-contrast UI based on International Typographic Style principles.
 *   **Gemini AI Integration**: Automated discovery of causal drivers and strategic interventions using Google's Gemini 2.5 Flash model.
 *   **AHP Computation Engine**: Client-side calculation of Eigenvectors, Consistency Ratios (CR), and geometric mean aggregation.
 *   **Interactive Visualization**: Force-directed logic graphs using D3.js and priority matrices using Recharts.
