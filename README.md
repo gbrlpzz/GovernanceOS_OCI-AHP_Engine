@@ -27,7 +27,7 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 ## // Tech Stack
 
 *   **Core**: React 19, TypeScript
-*   **Styling**: Tailwind CSS (Custom "Swiss" config)
+*   **Styling**: Tailwind CSS
 *   **Math/Logic**: Custom AHP implementation (Power Method / Geometric Mean)
 *   **AI**: Google GenAI SDK (`@google/genai`)
 *   **Viz**: D3.js, Recharts
