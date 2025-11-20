@@ -3,9 +3,7 @@
 
 **A structured decision-support framework integrating causal modeling with multi-criteria prioritization.**
 
-The **Priority Engine** (formerly GovernanceOS) is a React-based decision intelligence tool designed for public administrations and mission-driven teams. It synthesizes the **Outcome–Cause–Intervention (OCI)** causal structure with the **Analytic Hierarchy Process (AHP)** to prioritize interventions based on mathematical utility rather than intuition alone.
-
-![Swiss Style UI](https://via.placeholder.com/800x400/000000/FFFFFF?text=PRIORITY_ENGINE+INTERFACE)
+The **Priority Engine** is a React-based decision intelligence tool designed for public administrations and mission-driven teams. It synthesizes the **Outcome–Cause–Intervention (OCI)** causal structure with the **Analytic Hierarchy Process (AHP)** to prioritize interventions based on mathematical utility rather than intuition alone.
 
 ## // Methodology
 
@@ -21,7 +19,7 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 
 ## // Features
 
-*   **Swiss Style Design System**: A rigorous, high-contrast UI based on International Typographic Style principles (Inter / JetBrains Mono).
+*   **Design System**: A high-contrast UI based on International Typographic Style principles (Inter / JetBrains Mono).
 *   **Gemini AI Integration**: Automated discovery of causal drivers and strategic interventions using Google's Gemini 2.5 Flash model.
 *   **AHP Computation Engine**: Client-side calculation of Eigenvectors, Consistency Ratios (CR), and geometric mean aggregation.
 *   **Interactive Visualization**: Force-directed logic graphs using D3.js and priority matrices using Recharts.
@@ -30,7 +28,7 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 ## // Tech Stack
 
 *   **Core**: React 19, TypeScript
-*   **Styling**: Tailwind CSS (Custom "Swiss" config)
+*   **Styling**: Tailwind CSS
 *   **Math/Logic**: Custom AHP implementation (Power Method / Geometric Mean)
 *   **AI**: Google GenAI SDK (`@google/genai`)
 *   **Viz**: D3.js, Recharts
@@ -66,7 +64,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## // Credits
 
 **Concept & Engineering**: Gabriele Pizzi
-**Studio**: Opera Incerta
+
 **Correspondence**: [info@operaincerta.com](mailto:info@operaincerta.com)
 
 *Based on the Analytic Hierarchy Process (AHP) methodology by Thomas L. Saaty.*
