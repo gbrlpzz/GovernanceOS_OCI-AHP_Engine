@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useMemo, useState } from 'react';
 import * as d3 from 'd3';
 import { Cause, Intervention } from '../types';
@@ -177,10 +178,10 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
         .attr("cursor", "grab")
         .attr("role", "graphics-symbol")
         .attr("aria-label", (d: any) => `${d.type}: ${d.label}`)
-        .call(d3.drag()
+        .call(d3.drag<SVGGElement, any>()
             .on("start", dragstarted)
             .on("drag", dragged)
-            .on("end", dragended) as any);
+            .on("end", dragended));
 
     // Node Shapes
     node.each(function(d: any) {
@@ -262,19 +263,19 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
             .attr("transform", (d: any) => `translate(${d.x},${d.y})`);
     });
 
-    function dragstarted(event: any, d: any) {
+    function dragstarted(this: SVGGElement, event: any, d: any) {
       if (!event.active) simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
       d3.select(this).attr("cursor", "grabbing");
     }
 
-    function dragged(event: any, d: any) {
+    function dragged(this: SVGGElement, event: any, d: any) {
       d.fx = event.x;
       d.fy = event.y;
     }
 
-    function dragended(event: any, d: any) {
+    function dragended(this: SVGGElement, event: any, d: any) {
       if (!event.active) simulation.alphaTarget(0);
       d.fx = null;
       d.fy = null;

@@ -40,6 +40,28 @@ const EmptyState: React.FC<{ label: string }> = ({ label }) => (
     </div>
 );
 
+// Custom Tick Component to fix TS overload errors
+const CustomYAxisTick = (props: any) => {
+  const { x, y, payload } = props;
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text 
+        x={-10} 
+        y={0} 
+        dy={4} 
+        textAnchor="end" 
+        fill="#000000" 
+        fontSize={11} 
+        fontFamily="JetBrains Mono" 
+        fontWeight={700} 
+        style={{textTransform: 'uppercase'}}
+      >
+        {payload.value}
+      </text>
+    </g>
+  );
+};
+
 // Extracted Component to fix Hook Rules (Error #300)
 const DefinitionView: React.FC<{
     state: OCIState;
@@ -529,7 +551,7 @@ function App() {
                             dataKey="name" 
                             type="category" 
                             width={200} 
-                            tick={{fill: '#000000', fontSize: 11, fontFamily: 'JetBrains Mono', fontWeight: 700, textTransform: 'uppercase'}} 
+                            tick={CustomYAxisTick} 
                             axisLine={false}
                             tickLine={false}
                         />
@@ -641,7 +663,7 @@ function App() {
             Generated with: <span className="font-bold">Priority Engine</span> // <a href="https://github.com/gbrlpzz/OCI-AHP_Priority_Engine" className="underline decoration-1">github.com/gbrlpzz/OCI-AHP_Priority_Engine</a>
         </div>
         <div className="text-[8px] font-mono uppercase text-gray-500">
-            Copyright &copy; 2025 Gabriele Pizzi / Opera Incerta. All rights reserved.
+            Copyright &copy; 2025 Gabriele Pizzi // Opera Incerta. All rights reserved.
         </div>
       </div>
 

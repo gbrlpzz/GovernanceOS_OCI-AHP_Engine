@@ -7,8 +7,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Polyfill process.env for the existing code structure
-      'process.env': env
+      // Only define the API key to avoid overwriting process.env.NODE_ENV which breaks React
+      'process.env.API_KEY': JSON.stringify(env.API_KEY)
     }
   };
 });
