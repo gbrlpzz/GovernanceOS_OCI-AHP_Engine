@@ -21,7 +21,6 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 
 ## // Features
 
-*   **Swiss Style Design System**: A rigorous, high-contrast UI based on International Typographic Style principles (Inter / JetBrains Mono).
 *   **Gemini AI Integration**: Automated discovery of causal drivers and strategic interventions using Google's Gemini 2.5 Flash model.
 *   **AHP Computation Engine**: Client-side calculation of Eigenvectors, Consistency Ratios (CR), and geometric mean aggregation.
 *   **Interactive Visualization**: Force-directed logic graphs using D3.js and priority matrices using Recharts.
@@ -30,7 +29,7 @@ $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 ## // Tech Stack
 
 *   **Core**: React 19, TypeScript
-*   **Styling**: Tailwind CSS (Custom "Swiss" config)
+*   **Styling**: Tailwind CSS
 *   **Math/Logic**: Custom AHP implementation (Power Method / Geometric Mean)
 *   **AI**: Google GenAI SDK (`@google/genai`)
 *   **Viz**: D3.js, Recharts
