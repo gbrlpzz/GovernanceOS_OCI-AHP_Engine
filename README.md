@@ -3,9 +3,7 @@
 
 **A structured decision-support framework integrating causal modeling with multi-criteria prioritization.**
 
-The **Priority Engine** (formerly GovernanceOS) is a React-based decision intelligence tool designed for public administrations and mission-driven teams. It synthesizes the **Outcome–Cause–Intervention (OCI)** causal structure with the **Analytic Hierarchy Process (AHP)** to prioritize interventions based on mathematical utility rather than intuition alone.
-
-![Swiss Style UI](https://via.placeholder.com/800x400/000000/FFFFFF?text=PRIORITY_ENGINE+INTERFACE)
+The **Priority Engine** (formerly GovernanceOS) is a React-based decision intelligence tool designed for public administrations and mission-driven teams. It synthesizes the **Outcome–Cause–Intervention (OCI)** causal structure with the **Analytic Hierarchy Process (AHP)** to prioritize interventions.
 
 ## // Methodology
 
