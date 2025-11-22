@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #FFFFFF;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "ss02", "cv01", "cv02"; /* Swiss Style alternates */
+}
+
+/* Selection */
+::selection {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* Custom Focus Ring */
+*:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF; 
+  border-left: 1px solid #E5E5E5;
+}
+::-webkit-scrollbar-thumb {
+  background: #000000; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333333; 
+}
+
+/* Print Styles */
+@media print {
+  @page { margin: 1cm; size: portrait; }
+  /* Important: Hide normal UI elements */
+  header, footer, .no-print, button[type="button"]:not(.print-visible) {
+      display: none !important;
+  }
+  .print-only {
+      display: block !important;
+  }
+  /* Add padding to body so fixed header doesn't overlap content */
+  body {
+      background: white !important;
+      font-size: 12px;
+      padding-top: 40px; 
+  }
+  .shadow-sharp, .shadow-hover {
+      box-shadow: none !important;
+      border: 1px solid #000;
+  }
+  * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+  }
+}
