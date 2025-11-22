@@ -7,8 +7,13 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     define: {
-      // Only define the API key to avoid overwriting process.env.NODE_ENV which breaks React
-      'process.env.API_KEY': JSON.stringify(env.API_KEY)
+      // Fix "process is not defined" error in browser
+      'process.env': {
+        API_KEY: env.API_KEY,
+        NODE_ENV: mode,
+      },
+      // Polyfill global for some older libraries
+      'global': 'window',
     }
   };
 });

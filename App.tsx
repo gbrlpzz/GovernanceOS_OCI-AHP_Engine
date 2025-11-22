@@ -43,6 +43,9 @@ const EmptyState: React.FC<{ label: string }> = ({ label }) => (
 // Custom Tick Component to fix TS overload errors
 const CustomYAxisTick = (props: any) => {
   const { x, y, payload } = props;
+  // Use JS to uppercase instead of style prop to avoid SVGProps conflicts
+  const textValue = String(payload.value || '').toUpperCase();
+  
   return (
     <g transform={`translate(${x},${y})`}>
       <text 
@@ -53,10 +56,9 @@ const CustomYAxisTick = (props: any) => {
         fill="#000000" 
         fontSize={11} 
         fontFamily="JetBrains Mono" 
-        fontWeight={700} 
-        style={{textTransform: 'uppercase'}}
+        fontWeight={700}
       >
-        {payload.value}
+        {textValue}
       </text>
     </g>
   );
@@ -155,8 +157,8 @@ const DefinitionView: React.FC<{
                       <span className="font-bold text-xl text-swiss-black tracking-tight">{c.label}</span>
                    </div>
                    <Button
-                    variant="danger"
-                    className="h-8 px-4 text-[10px]"
+                    variant="ghost"
+                    className="h-8 px-4 text-[10px] border-2 border-transparent hover:border-swiss-black hover:bg-swiss-black hover:text-white transition-colors"
                     onClick={() => setState(s => ({...s, causes: s.causes.filter(x => x.id !== c.id)}))}
                     aria-label={`Remove ${c.label}`}
                     type="button"
@@ -244,8 +246,8 @@ const DefinitionView: React.FC<{
                         <div className="flex justify-between items-start mb-4">
                             <h4 className="font-bold text-xl text-swiss-black tracking-tight leading-tight">{i.label}</h4>
                             <Button 
-                                variant="danger"
-                                className="h-8 px-4 text-[10px]"
+                                variant="ghost"
+                                className="h-8 px-4 text-[10px] border-2 border-transparent hover:border-swiss-black hover:bg-swiss-black hover:text-white transition-colors"
                                 onClick={() => setState(s => ({...s, interventions: s.interventions.filter(x => x.id !== i.id)}))}
                                 aria-label={`Remove ${i.label}`}
                                 type="button"
