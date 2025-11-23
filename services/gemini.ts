@@ -1,12 +1,9 @@
+/// <reference types="vite/client" />
 import { GoogleGenAI, Type } from "@google/genai";
 
 // Helper to check if API key exists without crashing
 const getApiKey = () => {
-  try {
-    return process.env.API_KEY;
-  } catch (e) {
-    return undefined;
-  }
+  return import.meta.env.VITE_API_KEY;
 };
 
 export const generateCauses = async (outcome: string): Promise<string[]> => {
@@ -38,13 +35,13 @@ export const generateCauses = async (outcome: string): Promise<string[]> => {
   }
 };
 
-export const generateInterventions = async (outcome: string, causes: string[]): Promise<{label: string, targets: string[]}[]> => {
-    const key = getApiKey();
-    if (!key) return [];
-  
-    const ai = new GoogleGenAI({ apiKey: key });
-  
-    const prompt = `
+export const generateInterventions = async (outcome: string, causes: string[]): Promise<{ label: string, targets: string[] }[]> => {
+  const key = getApiKey();
+  if (!key) return [];
+
+  const ai = new GoogleGenAI({ apiKey: key });
+
+  const prompt = `
       Outcome: ${outcome}
       Causes: ${causes.join(", ")}
       
@@ -53,36 +50,36 @@ export const generateInterventions = async (outcome: string, causes: string[]): 
       Use ONLY the causes listed above.
     `;
 
-    try {
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-        config: {
-          systemInstruction: "You are an expert solution architect. Suggest high-impact interventions.",
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: Type.ARRAY,
-            items: {
-                type: Type.OBJECT,
-                properties: {
-                    label: { type: Type.STRING },
-                    targets: { 
-                        type: Type.ARRAY,
-                        items: { type: Type.STRING },
-                        description: "Must exactly match strings from the provided Causes list"
-                    }
-                },
-                required: ["label", "targets"]
-            }
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        systemInstruction: "You are an expert solution architect. Suggest high-impact interventions.",
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.ARRAY,
+          items: {
+            type: Type.OBJECT,
+            properties: {
+              label: { type: Type.STRING },
+              targets: {
+                type: Type.ARRAY,
+                items: { type: Type.STRING },
+                description: "Must exactly match strings from the provided Causes list"
+              }
+            },
+            required: ["label", "targets"]
           }
         }
-      });
-  
-      const text = response.text;
-      if (!text) return [];
-      return JSON.parse(text) as {label: string, targets: string[]}[];
-    } catch (error) {
-      console.error("Gemini Error:", error);
-      return [];
-    }
-  };
+      }
+    });
+
+    const text = response.text;
+    if (!text) return [];
+    return JSON.parse(text) as { label: string, targets: string[] }[];
+  } catch (error) {
+    console.error("Gemini Error:", error);
+    return [];
+  }
+};
