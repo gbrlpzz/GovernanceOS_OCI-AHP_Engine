@@ -13,15 +13,16 @@ The system imposes a strict three-tier ontology to ensure traceability:
 
 1.  **Outcome (Tier I)**: The singular strategic objective (e.g., "Reduce Rural Depopulation").
 2.  **Drivers (Tier II)**: Probabilistic causal factors influencing the Outcome.
-3.  **Interventions (Tier III)**: Discrete operational programs mapped to specific drivers.
+3.  **Interventions (Tier III)**: Discrete operational programs mapped to specific drivers, with optional prerequisite relationships.
 
-Prioritization is calculated using **Eigenvector Centrality** derived from pairwise comparison matrices (Saaty, 1980). The final utility score ($S_i$) for an intervention is calculated as:
+Prioritization is calculated using **Eigenvector Centrality** derived from pairwise comparison matrices (Saaty, 1980). When dependencies exist between interventions, scores are propagated to ensure prerequisites inherit the importance of dependent actions. The final utility score ($S_i$) for an intervention is calculated as:
 
 $$ S_i = Coverage \times Effectiveness \times Feasibility $$
 
 ## // Features
 
 *   **Swiss Style Design System**: A rigorous, high-contrast UI based on International Typographic Style principles (Inter / JetBrains Mono).
+*   **Dependency Handling**: Define prerequisite relationships between interventions with automatic score propagation to ensure proper prioritization.
 *   **Gemini AI Integration**: Automated discovery of causal drivers and strategic interventions using Google's Gemini 2.5 Flash model.
 *   **AHP Computation Engine**: Client-side calculation of Eigenvectors, Consistency Ratios (CR), and geometric mean aggregation.
 *   **Interactive Visualization**: Force-directed logic graphs using D3.js and priority matrices using Recharts.

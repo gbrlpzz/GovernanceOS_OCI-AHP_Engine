@@ -71,6 +71,14 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
           list.push({ source: tid, target: i.id, type: 'target' });
         }
       });
+      // Add dependency links
+      if (i.prerequisites && i.prerequisites.length > 0) {
+        i.prerequisites.forEach(prereqId => {
+          if (interventions.find(p => p.id === prereqId)) {
+            list.push({ source: prereqId, target: i.id, type: 'dependency' });
+          }
+        });
+      }
     });
     return list;
   }, [outcome, causes, interventions]);
@@ -167,8 +175,12 @@ export const NetworkGraph: React.FC<NetworkGraphProps> = ({
       .data(links)
       .join("line")
       .attr("stroke", "#000000")
-      .attr("stroke-width", 1.5)
-      .attr("stroke-dasharray", (d: any) => d.type === 'driver' ? "0" : "4 2"); // Dashed for interventions
+      .attr("stroke-width", (d: any) => d.type === 'dependency' ? 2.5 : 1.5)
+      .attr("stroke-dasharray", (d: any) => {
+        if (d.type === 'driver') return "0"; // Solid for outcome->drivers
+        if (d.type === 'dependency') return "6 4"; // Distinct dotted for prerequisites
+        return "4 2"; // Dashed for interventions targeting causes
+      });
 
     // Draw Nodes Group
     const node = container.append("g")
