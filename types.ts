@@ -7,6 +7,7 @@ export interface Intervention {
   id: string;
   label: string;
   targetCauseIds: string[];
+  prerequisites?: string[]; // IDs of interventions that must happen BEFORE this one
   resonance?: number; // 0-1 value for section 6 implementation
 }
 
@@ -36,7 +37,7 @@ export interface OCIState {
   outcome: string;
   causes: Cause[];
   interventions: Intervention[];
-  
+
   // Comparison State
   causeComparisons: Record<string, number>;
   effComparisons: Record<string, number>;
@@ -51,3 +52,17 @@ export const INITIAL_STATE: OCIState = {
   effComparisons: {},
   feasComparisons: {}
 };
+
+// OCI Validation Types
+export interface DriverValidation {
+  isValid: boolean;
+  warnings: ValidationWarning[];
+  suggestions: string[];
+}
+
+export interface ValidationWarning {
+  type: 'hierarchical' | 'causal' | 'redundant' | 'overlap';
+  driverIds: string[];
+  message: string;
+  severity: 'warning' | 'error';
+}
